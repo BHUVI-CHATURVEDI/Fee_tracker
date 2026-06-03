@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fee Tracker Dashboard</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .card{
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .paid{
+            color: green;
+        }
+
+        .unpaid{
+            color: red;
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+        button{
+            padding:8px 12px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🥋 Taekwondo Fee Tracker</h1>
+
+<div class="card">
+    <h2>Dashboard</h2>
+
+    <p>Total Students: <b>{{ total }}</b></p>
+    <p class="paid">Paid: <b>{{ paid }}</b></p>
+    <p class="unpaid">Pending: <b>{{ pending }}</b></p>
+</div>
+
+<div class="card">
+    <a href="/add">
+        <button>Add Student</button>
+    </a>
+
+    <a href="/students">
+        <button>View Students</button>
+    </a>
+</div>
+
+<div class="card">
+    <h2>✅ Paid Students</h2>
+
+    <ul>
+        {% for s in paid_list %}
+            <li>{{ s[1] }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card">
+    <h2>❌ Unpaid Students</h2>
+
+    <ul>
+        {% for s in unpaid_list %}
+            <li>
+                {{ s[1] }}
+                <a href="/pay/{{ s[0] }}">
+                    <button>Mark Paid</button>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>
