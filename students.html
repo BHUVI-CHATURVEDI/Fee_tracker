@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+    <th>Status</th>
+</head>
+<body>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Students</title>
+
+```
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    table{
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td{
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th{
+        background: #f2f2f2;
+    }
+
+    .paid{
+        color: green;
+    }
+
+    .unpaid{
+        color: red;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<h1>Students List</h1>
+
+<a href="/">Dashboard</a> | <a href="/add">Add Student</a>
+
+<br><br>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Status</th>
+        <th>Delete</th>
+    </tr>
+
+```
+{% for s in students %}
+<tr>
+    <td>{{ s[0] }}</td>
+    <td>{{ s[1] }}</td>
+    <td>{{ s[2] }}</td>
+
+    <td>
+        {% if s[0] in paid_ids %}
+            <span class="paid">✅ Paid</span>
+        {% else %}
+            <span class="unpaid">❌ Unpaid</span>
+            <a href="/pay/{{ s[0] }}">Mark Paid</a>
+        {% endif %}
+    </td>
+
+    <td>
+        <a href="/delete/{{ s[0] }}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+```
+
+</table>
+
+</body>
+</html>
+
+
+</body>
+</html>
